@@ -10,6 +10,7 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.JokesJava;
@@ -17,6 +18,7 @@ import com.example.JokesJava;
 
 
 public class MainActivity extends AppCompatActivity {
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,11 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-
+//        progress = new ProgressDialog(this);
+//        progress.setMessage("loading.....");
+//        progress.show();
+//        progress.setCancelable(false);
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
     }
 
     @Override
@@ -77,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
 //      intent.putExtra(JokeActivity.JOKE_KEY, joke);
 //        startActivity(intent);
 
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this," "));
+        spinner.setVisibility(View.VISIBLE);
+
+        new EndpointsAsyncTask().execute(new Pair<Context, ProgressBar>(this,spinner));
     }
 
 }

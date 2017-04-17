@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Pair;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.app.azza.androidjokedisplay.JokeActivity;
 import com.app.azza.myapplication.backend.myApi.MyApi;
@@ -18,12 +20,16 @@ import java.io.IOException;
  * Created by azza ahmed on 4/17/2017.
  */
 
-    class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+    class EndpointsAsyncTask extends AsyncTask<Pair<Context, ProgressBar>, Void, String> {
         private static MyApi myApiService = null;
         private Context context;
+       // ProgressDialog progress;
+       private ProgressBar spinner;
 
-        @Override
-        protected String doInBackground(Pair<Context, String>... params) {
+
+    @Override
+        protected String doInBackground(Pair<Context, ProgressBar>... params) {
+
             if(myApiService == null) {  // Only do this once
                 MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                         new AndroidJsonFactory(), null)
@@ -46,7 +52,8 @@ import java.io.IOException;
             }
 
             context = params[0].first;
-            String name = params[0].second;
+             spinner = params[0].second;
+
 
             try {
             //  return myApiService.
@@ -59,7 +66,8 @@ import java.io.IOException;
         @Override
         protected void onPostExecute(String result) {
             //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-
+         //   progress.dismiss();
+            spinner.setVisibility(View.GONE);
             Intent intent = new Intent(context, JokeActivity.class);
 
             intent.putExtra(JokeActivity.JOKE_KEY, result);

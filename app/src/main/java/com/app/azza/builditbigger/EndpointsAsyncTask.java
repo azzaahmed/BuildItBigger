@@ -1,11 +1,11 @@
 package com.app.azza.builditbigger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.util.Pair;
-import android.widget.Toast;
 
+import com.app.azza.androidjokedisplay.JokeActivity;
 import com.app.azza.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -49,7 +49,8 @@ import java.io.IOException;
             String name = params[0].second;
 
             try {
-                return myApiService.sayHi(name).execute().getData();
+            //  return myApiService.
+            return myApiService.getJoke().execute().getData();
             } catch (IOException e) {
                 return e.getMessage();
             }
@@ -57,8 +58,12 @@ import java.io.IOException;
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-            Log.v("Asynk task",result);
+            //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(context, JokeActivity.class);
+
+            intent.putExtra(JokeActivity.JOKE_KEY, result);
+            context.startActivity(intent);
         }
     }
 

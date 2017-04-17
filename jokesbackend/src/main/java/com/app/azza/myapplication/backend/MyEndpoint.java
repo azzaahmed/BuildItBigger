@@ -6,6 +6,7 @@
 
 package com.app.azza.myapplication.backend;
 
+import com.example.JokesJava;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -32,5 +33,15 @@ public class MyEndpoint {
 
         return response;
     }
+
+    @ApiMethod(name = "getJoke")
+    public MyBean getJoke() {
+        MyBean response = new MyBean();
+        JokesJava jokeSource = new JokesJava();
+       String joke = jokeSource.getJoke();
+        response.setData(joke);
+        return response;
+    }
+
 
 }

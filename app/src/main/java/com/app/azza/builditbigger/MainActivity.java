@@ -1,7 +1,6 @@
 package com.app.azza.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.app.azza.androidjokedisplay.JokeActivity;
 import com.example.JokesJava;
 
 
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "azza"));
+
     }
 
     @Override
@@ -72,11 +70,14 @@ public class MainActivity extends AppCompatActivity {
 
     //ba5od joke mn java library ab3atha lel android library 3lshan display
     public void launchJokeActivity(View view) {
-        Intent intent = new Intent(this, JokeActivity.class);
-        JokesJava jokeSource = new JokesJava();
-        String joke = jokeSource.getJoke();
-        intent.putExtra(JokeActivity.JOKE_KEY, joke);
-        startActivity(intent);
+//        Intent intent = new Intent(this, JokeActivity.class);
+//         JokesJava jokeSource = new JokesJava();
+//       String joke = jokeSource.getJoke();
+//
+//      intent.putExtra(JokeActivity.JOKE_KEY, joke);
+//        startActivity(intent);
+
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this," "));
     }
 
 }

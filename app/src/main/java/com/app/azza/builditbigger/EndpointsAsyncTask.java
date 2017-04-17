@@ -57,8 +57,7 @@ import java.io.IOException;
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-            Log.v("hjjg", "hgjg");
-            Log.v("azza",result);
+            Log.v("Asynk task",result);
         }
     }
 

@@ -11,9 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import com.example.JokesJava;
 
 
 
@@ -35,10 +32,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-//        progress = new ProgressDialog(this);
-//        progress.setMessage("loading.....");
-//        progress.show();
-//        progress.setCancelable(false);
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
     }
 
@@ -65,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void tellJoke(View view) {
+   /* public void tellJoke(View view) {
 
         String joke;
         JokesJava JokeTeller= new JokesJava();
         joke=JokeTeller.getJoke();
         Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
     }
-
+*/
     //ba5od joke mn java library ab3atha lel android library 3lshan display
     public void launchJokeActivity(View view) {
 //        Intent intent = new Intent(this, JokeActivity.class);

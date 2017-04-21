@@ -23,10 +23,10 @@ android {
     }
     productFlavors{
         free {
-            applicationId "com.app.azza.BuildItBigger.free"
+            applicationId "com.app.azza.builditbigger.free"
         }
         paid {
-            applicationId "com.app.azza.BuildItBigger.paid"
+            applicationId "com.app.azza.builditbigger.paid"
         }
     }
 }
